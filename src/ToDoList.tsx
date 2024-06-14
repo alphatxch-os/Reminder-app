@@ -30,7 +30,6 @@ const TodoList: React.FC = () => {
     );
     setTodos(updatedTodos);
 
-    // Move completed todo to completedTodos state
     const completedTodo = todos.find(todo => todo.id === id);
     if (completedTodo && !completedTodo.completed) {
       setCompletedTodos([...completedTodos, { ...completedTodo, completed: true }]);
@@ -44,10 +43,9 @@ const TodoList: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // Remove completed todos from todos state after 10 seconds
       const updatedTodos = todos.filter(todo => !todo.completed);
       setTodos(updatedTodos);
-    }, 10000); // 10 seconds
+    }, 10000); 
     return () => clearTimeout(timer);
   }, [todos]);
 
@@ -86,7 +84,6 @@ const TodoList: React.FC = () => {
           </li>
         ))}
       </ul>
-      {/* Display completed todos under a separate section */}
       <div className="completed-todos">
         <h3>Completed Todos</h3>
         <ul>
